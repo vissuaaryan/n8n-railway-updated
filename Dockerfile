@@ -2,11 +2,13 @@ FROM n8nio/n8n:latest
 
 USER root
 
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
     chromium \
+    nss \
+    freetype \
+    harfbuzz \
     ca-certificates \
-    fonts-liberation \
-    && rm -rf /var/lib/apt/lists/*
+    ttf-freefont
 
 RUN npm install -g playwright
 
